@@ -9,7 +9,7 @@ let cometSize = 0;
 
 function draw() {
   background(0, 0, 0, 20);
-  circle(cometX, cometY, (cometSize += 0.5));
+  circle(cometX, cometY, (cometSize += 0.2));
   cometX++;
   cometY++;
 
