@@ -14,6 +14,13 @@ let comet2 = {
   velocity: 1.5,
 };
 
+let comet3 = {
+  x: 25,
+  y: 0,
+  diameter: 5,
+  velocity: 4,
+};
+
 function setup() {
   createCanvas(canvasBase, canvasBase);
   background("black");
@@ -25,15 +32,16 @@ function draw() {
   background(0, 0, 0, 10);
   renderComet(comet1, canvasBase);
   renderComet(comet2, canvasBase);
+  renderComet(comet3, canvasBase);
 }
 
-function renderComet(comet) {
+function renderComet(comet, threshold) {
   comet.x = comet.x + comet.velocity;
   comet.y = comet.y + comet.velocity;
 
   circle(comet.x, comet.y, comet.diameter);
 
-  if (comet.x > 400 || comet.y > 400) {
+  if (comet.x > threshold || comet.y > threshold) {
     comet.x = random(0, 100);
     comet.y = 0;
   }
