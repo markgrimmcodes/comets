@@ -1,21 +1,40 @@
+let canvasBase = 400;
+
+let comet1 = {
+  x: 0,
+  y: 0,
+  diameter: 30,
+  velocity: 1,
+};
+
+let comet2 = {
+  x: 50,
+  y: 0,
+  diameter: 20,
+  velocity: 1.5,
+};
+
 function setup() {
-  createCanvas(400, 400);
-  background(0);
+  createCanvas(canvasBase, canvasBase);
+  background("black");
+
   noStroke();
 }
-let cometX = 0;
-let cometY = 0;
-let cometSize = 0;
 
 function draw() {
-  background(0, 0, 0, 20);
-  circle(cometX, cometY, (cometSize += 0.2));
-  cometX++;
-  cometY++;
+  background(0, 0, 0, 10);
+  renderComet(comet1, canvasBase);
+  renderComet(comet2, canvasBase);
+}
 
-  if (cometX > 400) {
-    cometX = 0;
-    cometY = 0;
-    cometSize = 0;
+function renderComet(comet) {
+  comet.x = comet.x + comet.velocity;
+  comet.y = comet.y + comet.velocity;
+
+  circle(comet.x, comet.y, comet.diameter);
+
+  if (comet.x > 400 || comet.y > 400) {
+    comet.x = random(0, 100);
+    comet.y = 0;
   }
 }
