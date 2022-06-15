@@ -31,7 +31,7 @@ function draw() {
   for (let i = 0; i < comets.length; i++) {
     renderComet(comets[i], canvasBase);
   }
-  let colors = ["firebrick", "lightblue", "orange"];
+  let colors = ["firebrick", "salmon", "orange"];
   let color = random(colors);
   fill(color);
 }
@@ -41,10 +41,11 @@ function renderComet(comet, threshold) {
   comet.x = comet.x + comet.velocity;
   comet.y = comet.y + comet.velocity;
 
-  circle(comet.x, comet.y, comet.diameter);
+  circle(comet.x, comet.y, (comet.diameter += 0.2));
 
   if (comet.x > threshold || comet.y > threshold) {
     comet.x = random(0, canvasBase);
     comet.y = random(0, 0.5 * canvasBase);
+    comet.diameter = random(5, 30);
   }
 }
